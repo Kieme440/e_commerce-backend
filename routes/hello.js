@@ -1,10 +1,12 @@
-import express from express;
+import express from "express";
+import { getAllProducts, createNewProduct, updateProducts, deleteProducts } from "../controller/productController.js";
 
 const helloRoute = express.Router();
 
-helloRoute.get("/hello", (req, res)=>{
-    res.send("welcome to my world!");
-});
+helloRoute.get("/", getAllProducts);
+helloRoute.post("/", updateProducts);
+helloRoute.put("/:id", createNewProduct);
+helloRoute.delete("/:id", deleteProducts);
 
-module.exports = helloRoute;
+export default helloRoute;
 
